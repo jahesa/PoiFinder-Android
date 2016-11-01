@@ -53,8 +53,8 @@ public class PoiDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PoiDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(PoiDetailFragment.ARG_ITEM_ID));
+            arguments.putInt(PoiDetailFragment.ARG_ITEM_ID,
+                    getIntent().getIntExtra(PoiDetailFragment.ARG_ITEM_ID, 0));
             PoiDetailFragment fragment = new PoiDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
