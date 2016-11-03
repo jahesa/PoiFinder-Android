@@ -38,10 +38,18 @@ public class RepoPois {
         poi7.setNombre("Colectivo 7");
         poi7.setDireccion("Hoston 4523");
 
+        Poi poi8 = new Local(8);
+        poi8.setNombre("Los Amigos");
+        poi8.setDireccion("Suipacha 77");
+
         poisList.add(poi1);
         poisList.add(poi2);
         poisList.add(poi3);
         poisList.add(poi4);
+        poisList.add(poi5);
+        poisList.add(poi6);
+        poisList.add(poi7);
+        poisList.add(poi8);
     }
 
     public static Poi findById(int id){
