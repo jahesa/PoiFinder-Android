@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">PoiFinder</string>
+    <string name="app_name">Lista de Pois</string>
     <string name="title_poi_detail">Poi Detail</string>
 </resources>

@@ -15,19 +15,19 @@ public class RepoPois {
         poi1.setDireccion("Esmeralda 4447");
 
         Poi poi2 = new CGP(2);
-        poi2.setNombre("Poi2");
+        poi2.setNombre("Servicio Penetinciario");
         poi2.setDireccion("La Plata 2523");
 
         Poi poi3 = new Colectivo(3);
         poi3.setNombre("Colectivo 78");
-        poi3.setDireccion("aca noma");
+        poi3.setDireccion("Roma 4457");
 
         Poi poi4 = new Local(4);
         poi4.setNombre("Lo de Pocho");
         poi4.setDireccion("Suipacha 7748");
 
         Poi poi5 = new Banco(5);
-        poi5.setNombre("Nacion");
+        poi5.setNombre("Banco Nacion");
         poi5.setDireccion("La Paz 1123");
 
         Poi poi6 = new Colectivo(6);
