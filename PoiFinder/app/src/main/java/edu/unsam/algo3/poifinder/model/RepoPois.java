@@ -10,37 +10,43 @@ public class RepoPois {
     public static final ArrayList<Poi> poisList = new ArrayList<Poi>();
 
     static {
-        Poi poi1 = new Banco(1);
+        Banco poi1 = new Banco(1);
         poi1.setNombre("Galicia");
-        poi1.setDireccion("Esmeralda 4447");
+        poi1.setDireccion("Rivadavia 372");
+        poi1.agregarServicio("cobro cheques");
+        poi1.agregarServicio("depósitos");
 
-        Poi poi2 = new CGP(2);
-        poi2.setNombre("Servicio Penetinciario");
-        poi2.setDireccion("La Plata 2523");
+        Banco poi2 = new Banco(2);
+        poi2.setNombre("Santander");
+        poi2.setDireccion("Lavalleja 581");
+        poi2.agregarServicio("cajero automatico");
 
-        Poi poi3 = new Colectivo(3);
+        Colectivo poi3 = new Colectivo(3);
         poi3.setNombre("Colectivo 78");
-        poi3.setDireccion("Roma 4457");
 
-        Poi poi4 = new Local(4);
-        poi4.setNombre("Lo de Pocho");
-        poi4.setDireccion("Suipacha 7748");
+        Colectivo poi4= new Colectivo(4);
+        poi4.setNombre("Colectivo 23");
 
-        Poi poi5 = new Banco(5);
-        poi5.setNombre("Banco Nacion");
-        poi5.setDireccion("La Paz 1123");
+        Colectivo poi5 = new Colectivo(5);
+        poi5.setNombre("Colectivo 7");
 
-        Poi poi6 = new Colectivo(6);
-        poi6.setNombre("Colectivo 23");
-        poi6.setDireccion("La Rioja 2159");
+        Local poi6 = new Local(6);
+        poi6.setNombre("Lo de Rosa");
+        poi6.setDireccion("Mitre 3271");
+        poi6.agregarPalabrasClaves("Rabano");
+        poi6.agregarPalabrasClaves("Lechuga");
 
-        Poi poi7 = new Colectivo(7);
-        poi7.setNombre("Colectivo 7");
-        poi7.setDireccion("Hoston 4523");
+        Local poi7 = new Local(7);
+        poi7.setNombre("Lo de Carlo");
+        poi7.setDireccion("Matheu 3289");
+        poi7.agregarPalabrasClaves("Vacio");
+        poi7.agregarPalabrasClaves("Chinchulin");
+        poi7.agregarPalabrasClaves("Chorrizo");
+        poi7.agregarPalabrasClaves("Nalga");
 
-        Poi poi8 = new Local(8);
-        poi8.setNombre("Los Amigos");
-        poi8.setDireccion("Suipacha 77");
+        CGP poi8 = new CGP(8);
+        poi8.setNombre("Servicio Penetinciario");
+        poi8.setDireccion("Pres. José E. Uriburu 1022");
 
         poisList.add(poi1);
         poisList.add(poi2);

@@ -5,6 +5,8 @@ package edu.unsam.algo3.poifinder.model;
  */
 public class CGP extends Poi {
 
+    // Atributos
+
     public CGP(int id)
     {
         super(id);

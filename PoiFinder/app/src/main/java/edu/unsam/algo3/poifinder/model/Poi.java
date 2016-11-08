@@ -1,21 +1,45 @@
 package edu.unsam.algo3.poifinder.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by Laboratorio on 01/11/2016.
  */
 public class Poi {
 
+    // -------------------------------------------
 
+    // FALTA ... x q todavia NO tenemos la dependencia de Point
+
+//    public boolean estaCerca = false;
+//
+//    abstract void estaCercaDe(Point point) {
+//        estaCerca = this.coordenada.distance(point) <= this.distanciaMinCercania;
+//    }
+
+    //    abstract double distancia(Point point) {
+//        coordenada.distance(point);
+//    }
+
+    // -------------------------------------------
+
+    // Atributos
     private int id;
     private String nombre;
-    private String direccion;
     private String barrio;
+    private String direccion;
     private int numero;
-    private String diasAtencion;
-    private String claves;
+    public Horario horarios;
     private String tipo;
 
+    //private Point coordenada;
 
+    double distanciaMinCercania;
+    public ArrayList<String> diasAtencionList = new ArrayList<String>();
+    public ArrayList<String> palabrasClaves = new ArrayList<String>();
+
+
+    //Acciones
     public Poi (int id) {
         this.id = id;
     }
@@ -32,12 +56,12 @@ public class Poi {
         this.nombre = nombre;
     }
 
-    public String getDiasAtencion() {
-        return diasAtencion;
+    public String getBarrio() {
+        return barrio;
     }
 
-    public void setDiasAtencion(String diasAtencion) {
-        this.diasAtencion = diasAtencion;
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
     }
 
     public String getDireccion() {
@@ -48,14 +72,6 @@ public class Poi {
         this.direccion = direccion;
     }
 
-    public String getBarrio() {
-        return barrio;
-    }
-
-    public void setBarrio(String barrio) {
-        this.barrio = barrio;
-    }
-
     public int getNumero() {
         return numero;
     }
@@ -64,12 +80,12 @@ public class Poi {
         this.numero = numero;
     }
 
-    public String getClaves() {
-        return claves;
+    public Horario getHorarios() {
+        return horarios;
     }
 
-    public void setClaves(String claves) {
-        this.claves = claves;
+    public void setHorarios(Horario horarios) {
+        this.horarios = horarios;
     }
 
     public String getTipo() {
@@ -79,4 +95,51 @@ public class Poi {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    //public Point getCoordenada() {
+    //     return coordenada;
+    //}
+
+//    public void setCoordenada(Point coordenada) {
+//        this.coordenada = coordenada;
+//    }
+
+    public double getDistanciaMinCercania() {
+        return distanciaMinCercania;
+    }
+
+    public void setDistanciaMinCercania(double distanciaMinCercania) {
+        this.distanciaMinCercania = distanciaMinCercania;
+    }
+
+    public ArrayList<String> getPoisDiasAtencion() {
+        return diasAtencionList;
+    }
+
+    public void setPoisDiasAtencion(ArrayList<String> poisDiasAtencion) {
+        this.diasAtencionList = poisDiasAtencion;
+    }
+
+    public ArrayList<String> getPalabrasClaves() {
+        return palabrasClaves;
+    }
+
+    void setPalabrasClaves(ArrayList<String> palabrasClaves) {
+        this.palabrasClaves = palabrasClaves;
+    }
+
+    boolean estaAbierto(String nombre, String dia, int hora, int minuto)
+    {
+        if(horarios.checkHora(hora, minuto) && diasAtencionList.contains(dia))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
 }
