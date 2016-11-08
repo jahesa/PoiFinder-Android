@@ -15,6 +15,7 @@ public class RepoPois {
         poi1.setDireccion("Rivadavia 372");
         poi1.agregarServicio("cobro cheques");
         poi1.agregarServicio("depósitos");
+        poi1.setNumero(13);
 
         Banco poi2 = new Banco(2);
         poi2.setNombre("Santander");

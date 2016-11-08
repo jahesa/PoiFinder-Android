@@ -37,9 +37,9 @@ public class Colectivo extends Poi {
 
     //public ArrayList<Point> paradas = new ArrayList<Point>();
 
-
     //Acciones
     public Colectivo(int id)
+
     {
         super(id);
     }

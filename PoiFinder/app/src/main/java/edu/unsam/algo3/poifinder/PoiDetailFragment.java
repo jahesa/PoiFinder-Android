@@ -28,7 +28,9 @@ public class PoiDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private Poi mItem;
+
+    //private Poi mItem;
+    private Poi poiSeleccionado;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -45,12 +47,12 @@ public class PoiDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = RepoPois.findById(getArguments().getInt(ARG_ITEM_ID));
+            poiSeleccionado = RepoPois.findById(getArguments().getInt(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.getNombre());
+                appBarLayout.setTitle(poiSeleccionado.getNombre());
             }
         }
     }
@@ -61,8 +63,9 @@ public class PoiDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.poi_detail, container, false);
 
         // Show the dummy content as text in a TextView.
-        if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.poi_detail)).setText(mItem.getDireccion());
+        if (poiSeleccionado != null) {
+            ((TextView) rootView.findViewById(R.id.poi_detail)).setText(poiSeleccionado.getDireccion());
+            ((TextView) rootView.findViewById(R.id.poi_nro)).setText(String.valueOf(poiSeleccionado.getNumero()));
         }
 
         return rootView;

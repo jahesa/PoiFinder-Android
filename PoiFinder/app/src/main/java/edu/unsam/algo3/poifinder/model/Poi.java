@@ -25,7 +25,7 @@ public class Poi {
 
     // Atributos
     private int id;
-    private String nombre;
+    public String nombre;
     private String barrio;
     private String direccion;
     private int numero;

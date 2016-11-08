@@ -13,6 +13,15 @@ public class Banco extends Poi {
 
     // public Horario h = new Horario [10,0,15,0];
 
+//    public Banco(String _nombre,String sucursal,String _gerente,ArrayList<String> _servicio, String dir)
+//    {
+//        nombre  = _nombre;
+//        sucursal = sucursal;
+//        gerente = _gerente;
+//        servicio = _servicio;
+//        direccion = dir;
+//    }
+
     // -------------------------------------------
 
 
