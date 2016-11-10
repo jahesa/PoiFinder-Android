@@ -6,6 +6,10 @@ package edu.unsam.algo3.poifinder.model;
 
 public class Horario {
 
+    /*****************************************************
+     * Atributos
+     ****************************************************/
+
     private int horaAperturaMañana;
     private int horaAperturaTarde = 0;
     private int minutoAperturaMañana;
@@ -14,6 +18,10 @@ public class Horario {
     private int horaCierreTarde = 0;
     private int minutoCierreMañana;
     private int minutoCierreTarde = 0;
+
+    /*****************************************************
+     * Constructores
+     ****************************************************/
 
     public Horario(int abreHoraMañana, int abreMinMañana, int cierraHoraMañana, int cierraMinMañana, int abreHoraTarde,
                                   int abreMinTarde, int cierraHoraTarde, int cierraMinTarde)
@@ -35,6 +43,10 @@ public class Horario {
         horaCierreMañana = cierraHoraMañana;
         minutoCierreMañana = cierraMinMañana;
     }
+
+    /*****************************************************
+     * Acciones
+     ****************************************************/
 
     public boolean checkHora(int hora, int minuto)
     {

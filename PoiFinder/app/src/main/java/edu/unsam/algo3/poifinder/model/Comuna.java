@@ -5,6 +5,27 @@ package edu.unsam.algo3.poifinder.model;
  */
 public class Comuna {
 
+    /*****************************************************
+     * Atributos
+     ****************************************************/
+
+    private String nombre;
+
+    /*****************************************************
+     * Getters & Setters
+     ****************************************************/
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
+
+
     // -------------------------------------------
 
     // FALTA
@@ -25,18 +46,4 @@ public class Comuna {
 
 
     // -------------------------------------------
-
-    // Atributos
-
-    private String nombre;
-
-    //Acciones
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }

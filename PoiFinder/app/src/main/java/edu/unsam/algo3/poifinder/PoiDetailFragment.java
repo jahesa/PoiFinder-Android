@@ -64,10 +64,17 @@ public class PoiDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (poiSeleccionado != null) {
-            ((TextView) rootView.findViewById(R.id.poi_detail)).setText(poiSeleccionado.getDireccion());
+            ((TextView) rootView.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
             ((TextView) rootView.findViewById(R.id.poi_nro)).setText(String.valueOf(poiSeleccionado.getNumero()));
+
+
+            //((TextView) rootView.findViewById(R.id.poi_nr)).setText(String.valueOf(poiSeleccionado.getCantParadas()));
         }
 
         return rootView;
     }
+
+
+
+
 }

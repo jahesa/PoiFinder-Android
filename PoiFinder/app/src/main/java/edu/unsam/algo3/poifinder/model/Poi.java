@@ -1,11 +1,12 @@
 package edu.unsam.algo3.poifinder.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Laboratorio on 01/11/2016.
  */
-public class Poi {
+public abstract class Poi {
 
     // -------------------------------------------
 
@@ -23,10 +24,12 @@ public class Poi {
 
     // -------------------------------------------
 
-    // Atributos
+    /*****************************************************
+     * Atributos
+     ****************************************************/
     private int id;
     public String nombre;
-    private String barrio;
+    public String barrio;
     private String direccion;
     private int numero;
     public Horario horarios;
@@ -40,11 +43,17 @@ public class Poi {
 
 
     //Acciones
-    public Poi (int id) {
+    public Poi (int id)
+    {
         this.id = id;
     }
 
-    public int getId() {
+
+    /*****************************************************
+     * Getters & Setters
+     ****************************************************/
+    public int getId()
+    {
         return id;
     }
 

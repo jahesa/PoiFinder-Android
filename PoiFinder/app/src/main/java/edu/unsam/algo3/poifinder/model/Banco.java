@@ -7,25 +7,9 @@ import java.util.ArrayList;
  */
 public class Banco extends Poi {
 
-    // -------------------------------------------
-
-    // FALTA
-
-    // public Horario h = new Horario [10,0,15,0];
-
-//    public Banco(String _nombre,String sucursal,String _gerente,ArrayList<String> _servicio, String dir)
-//    {
-//        nombre  = _nombre;
-//        sucursal = sucursal;
-//        gerente = _gerente;
-//        servicio = _servicio;
-//        direccion = dir;
-//    }
-
-    // -------------------------------------------
-
-
-    // Atributos
+    /*****************************************************
+     * Atributos
+     ****************************************************/
 
     public ArrayList<String> diasAtencionList = new ArrayList<String>();
     public ArrayList<String> servicios = new ArrayList<String>();
@@ -33,12 +17,34 @@ public class Banco extends Poi {
     private String gerente;
     private String direccion;
 
-    //Acciones
+
+    /*****************************************************
+     * Acciones
+     ****************************************************/
+
+    /*****************************************************
+     * Constructores
+     ****************************************************/
+
+    public Banco(int id, String _nombre,String sucursal,String _gerente,ArrayList<String> _servicio, String dir)
+    {
+        super(id);
+        super.nombre = nombre;
+        super.barrio = sucursal;
+        gerente = _gerente;
+        servicios = _servicio;
+        direccion = dir;
+        horarios = new Horario(10, 00, 15, 00);
+    }
 
     public Banco(int id)
     {
         super(id);
     }
+
+    /*****************************************************
+     * Getters & Setters
+     ****************************************************/
 
     public ArrayList<String> getDiasAtencionList() {
         return diasAtencionList;
@@ -55,7 +61,6 @@ public class Banco extends Poi {
     public ArrayList<String> getServicios() {
         return servicios;
     }
-
 
 //    @Override
 //    public static double getDistanciaMinCercania() {
@@ -84,15 +89,6 @@ public class Banco extends Poi {
 //        horarios = new Horario(10, 00, 15, 00);
 //    }
 
-//    public Banco(String _nombre, Point _coordenada, String sucursal, String _gerente, List<String> _servicio, String dir) {
-//        nombre = _nombre;
-//        coordenada = _coordenada;
-//        barrio = sucursal;
-//        gerente = _gerente;
-//        servicios = _servicio:
-//        direccion = dir;
-//        horarios = new Horario(10, 00, 15, 00);
-//    }
 
 //    public Poi(String _nombre) {
 //        nombre = _nombre;
@@ -101,6 +97,10 @@ public class Banco extends Poi {
 //    public Banco(Point punto) {
 //        coordenada = punto;
 //    }
+
+    /*****************************************************
+     * Negocio
+     ****************************************************/
 
     public void agregarServicio (String unServicio) {
         servicios.add (unServicio);

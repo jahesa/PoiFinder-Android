@@ -7,24 +7,30 @@ import java.util.ArrayList;
  */
 public class Local extends Poi {
 
-    // -------------------------------------------
-
-    // FALTA
-
-    // -------------------------------------------
-
-
+    /*****************************************************
+     * Atributos
+     ****************************************************/
 
     private String categoria;
     public ArrayList<String> palabrasClaves = new ArrayList<String>();
     private String direccion;
 
-    //Acciones
+    /**
+     * Acciones
+     */
+
+    /*****************************************************
+     * Constructores
+     ****************************************************/
 
     public Local(int id)
     {
         super(id);
     }
+
+    /*****************************************************
+     * Getters & Setters
+     ****************************************************/
 
     public String getCategoria () {
         return categoria;
@@ -42,10 +48,6 @@ public class Local extends Poi {
         this.palabrasClaves = servicios;
     }
 
-    public void agregarPalabrasClaves(String clave) {
-        palabrasClaves.add(clave);
-    }
-
     @Override
     public String getDireccion() {
         return direccion;
@@ -54,6 +56,14 @@ public class Local extends Poi {
     @Override
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    /*****************************************************
+     * Acciones
+     ****************************************************/
+
+    public void agregarPalabrasClaves(String clave) {
+        palabrasClaves.add(clave);
     }
 
     public void adddia(String dia) {

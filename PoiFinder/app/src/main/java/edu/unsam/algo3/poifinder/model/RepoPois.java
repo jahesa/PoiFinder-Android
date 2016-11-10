@@ -2,14 +2,42 @@ package edu.unsam.algo3.poifinder.model;
 
 import java.util.ArrayList;
 
+
 /**
  * Created by Laboratorio on 01/11/2016.
  */
 public class RepoPois {
 
+//    private ArrayList<Poi> poisList;
+//
     public static final ArrayList<Poi> poisList = new ArrayList<Poi>();
 
+    /**
+     * SINGLETON
+     */
+//    private static RepoPois instance;
+//
+//    private RepoPois() {
+//        poisList = new ArrayList<Poi>();
+//    }
+//
+//    public static RepoPois getInstance() {
+//        if (instance == null) {
+//            instance = new RepoPois();
+//            instance.init();
+//        }
+//        return instance;
+//    }
+
+
+    /**
+     *
+     *   Inicializacion Juego de Datos
+     */
+    //private void init() {
+
     static {
+
         Banco poi1 = new Banco(1);
         poi1.setNombre("Galicia");
         poi1.setDireccion("Rivadavia 372");
@@ -24,12 +52,15 @@ public class RepoPois {
 
         Colectivo poi3 = new Colectivo(3);
         poi3.setNombre("Colectivo 78");
+        poi3.setCantParadas(4);
 
-        Colectivo poi4= new Colectivo(4);
+        Poi poi4= new Colectivo(4);
         poi4.setNombre("Colectivo 23");
+        poi3.setCantParadas(7);
 
         Colectivo poi5 = new Colectivo(5);
         poi5.setNombre("Colectivo 7");
+        poi3.setCantParadas(2);
 
         Local poi6 = new Local(6);
         poi6.setNombre("Lo de Rosa");
@@ -59,7 +90,9 @@ public class RepoPois {
         poisList.add(poi8);
     }
 
-    public static Poi findById(int id){
+    //public Poi findById(int id){
+
+   public static Poi findById(int id){
         for (int i=0; i< poisList.size(); i++) {
             Poi poi = poisList.get(i);
             if (poi.getId() == id) {

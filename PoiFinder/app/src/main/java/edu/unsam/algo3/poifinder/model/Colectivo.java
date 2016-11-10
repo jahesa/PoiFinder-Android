@@ -7,6 +7,59 @@ import java.util.ArrayList;
  */
 public class Colectivo extends Poi {
 
+    /*****************************************************
+     * Atributos
+     ****************************************************/
+    private String nombre;
+    //public ArrayList<Point> paradas = new ArrayList<Point>();
+    public int cantParadas;
+
+
+    /*****************************************************
+     * Constructores
+     ****************************************************/
+    public Colectivo(int id)
+    {
+        super(id);
+    }
+
+    public Colectivo(int id, int nombre , int cantParadas)
+    {
+        super(id);
+        nombre = nombre;
+        cantParadas = cantParadas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre (String nombre) {
+        this. nombre = nombre;
+    }
+
+    public int getCantParadas() {
+        return cantParadas;
+    }
+
+    public void setCantParadas(int cantParadas) {
+        this.cantParadas = cantParadas;
+    }
+
+    //    public void addParada(double x, double y)
+//    {
+//        paradas.add(Point.and(x, y));
+//    }
+
+    @Override
+    boolean estaAbierto(String nombre, String dia, int hora, int minuto)
+    {
+        return true;
+    }
+
+
+
+
     // -------------------------------------------
 
     // FALTA
@@ -31,38 +84,6 @@ public class Colectivo extends Poi {
 //    }
 
     // -------------------------------------------
-
-    // Atributos
-    private String nombre;
-
-    //public ArrayList<Point> paradas = new ArrayList<Point>();
-
-    //Acciones
-    public Colectivo(int id)
-
-    {
-        super(id);
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre (String nombre) {
-        this. nombre = nombre;
-    }
-
-    //    public void addParada(double x, double y)
-//    {
-//        paradas.add(Point.and(x, y));
-//    }
-
-    @Override
-    boolean estaAbierto(String nombre, String dia, int hora, int minuto)
-    {
-        return true;
-    }
-
 
 
 }

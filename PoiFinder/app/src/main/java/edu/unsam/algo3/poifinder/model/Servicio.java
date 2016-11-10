@@ -9,11 +9,17 @@ import edu.unsam.algo3.poifinder.model.Horario;
  */
 public class Servicio {
 
+    /*****************************************************
+     * Atributos
+     ****************************************************/
+
     private String nombre;
     public ArrayList<String> poisList = new ArrayList<String>();
     private Horario horario;
 
-    //Acciones
+    /*****************************************************
+     * Getters & Setters
+     ****************************************************/
 
     public String getNombre() {
         return nombre;
