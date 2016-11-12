@@ -17,7 +17,6 @@ public class Banco extends Poi {
     private String gerente;
     private String direccion;
 
-
     /*****************************************************
      * Acciones
      ****************************************************/

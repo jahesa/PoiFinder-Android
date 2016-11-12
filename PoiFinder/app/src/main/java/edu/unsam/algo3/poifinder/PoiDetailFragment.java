@@ -57,6 +57,8 @@ public class PoiDetailFragment extends Fragment {
         }
     }
 
+    //metodo original
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,6 +75,48 @@ public class PoiDetailFragment extends Fragment {
 
         return rootView;
     }
+
+    // metodo alternativo
+
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState)
+//
+//    {
+//        View rootViewColectivo = inflater.inflate(R.layout.poi_detailColectivo, container, false);
+//        View rootViewCgp = inflater.inflate(R.layout.poi_detailCgp, container, false);
+//        View rootViewLocal = inflater.inflate(R.layout.poi_detailLocal, container, false);
+//        View rootViewBanco = inflater.inflate(R.layout.poi_detailBanco, container, false);
+//
+//        //Show the dummy content as text in a TextView.
+//        if ((poiSeleccionado != null) && (poiSeleccionado.getTipo() == "Colectivo"))
+//        {
+//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
+//            ((TextView) rootViewColectivo.findViewById(R.id.poi_nr)).setText(String.valueOf(poiSeleccionado.getCantParadas()))
+//
+//            //((TextView) rootViewColectivo.findViewById(R.id.poi_nro)).setText(String.valueOf(poiSeleccionado.getNumero()));
+//
+//            return rootViewColectivo;
+//        }
+//
+//        else if ((poiSeleccionado != null) && (poiSeleccionado.getTipo() == "CGP"))
+//        {
+//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
+//            return rootViewCgp;
+//        }
+//
+//        else if ((poiSeleccionado != null) && (poiSeleccionado.getTipo() == "Local"))
+//        {
+//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
+//            return rootViewLocal;
+//        }
+//
+//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
+//            return rootViewBanco;
+//    }
+
+
+
 
 
 
