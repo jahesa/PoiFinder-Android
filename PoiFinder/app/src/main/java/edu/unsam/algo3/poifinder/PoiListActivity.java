@@ -13,7 +13,10 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import edu.unsam.algo3.poifinder.dummy.DummyContent;
@@ -47,18 +50,25 @@ public class PoiListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
-        View recyclerView = findViewById(R.id.poi_list);
+        final View recyclerView = findViewById(R.id.poi_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+
+        final EditText txtBuscarNombre = (EditText) findViewById(R.id.txtBuscarNombre);
+
+        Button btnBuscar = (Button) findViewById(R.id.btnBuscar);
+        btnBuscar.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                //Toast.makeText(PoiListActivity.this, txtBuscarNombre.getText(), Toast.LENGTH_LONG).show();
+                String nombre = txtBuscarNombre.getText().toString();
+                RepoPois.filterByName(nombre);
+                setupRecyclerView((RecyclerView) recyclerView);
+            }
+        }
+        );
+
 
         if (findViewById(R.id.poi_detail_container) != null) {
             // The detail container view will be present only in the
@@ -70,7 +80,7 @@ public class PoiListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(RepoPois.poisList));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(RepoPois.poisFilteredList));
     }
 
     public class SimpleItemRecyclerViewAdapter

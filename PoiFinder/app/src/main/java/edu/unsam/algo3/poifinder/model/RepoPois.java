@@ -8,9 +8,9 @@ import java.util.ArrayList;
  */
 public class RepoPois {
 
-//    private ArrayList<Poi> poisList;
-//
     public static final ArrayList<Poi> poisList = new ArrayList<Poi>();
+
+    public static final ArrayList<Poi> poisFilteredList = new ArrayList<Poi>();
 
     /**
      * SINGLETON
@@ -88,6 +88,8 @@ public class RepoPois {
         poisList.add(poi6);
         poisList.add(poi7);
         poisList.add(poi8);
+
+        poisFilteredList.addAll(poisList);
     }
 
     //public Poi findById(int id){
@@ -100,6 +102,15 @@ public class RepoPois {
             }
         }
         return null;
+    }
+    public static void filterByName(String nombre){
+        poisFilteredList.clear();
+        for (int i=0; i< poisList.size(); i++) {
+            Poi poi = poisList.get(i);
+            if (poi.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                poisFilteredList.add(poi);
+            }
+        }
     }
 
 }
