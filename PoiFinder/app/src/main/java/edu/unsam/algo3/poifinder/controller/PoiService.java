@@ -1,6 +1,10 @@
 package edu.unsam.algo3.poifinder.controller;
 
-import edu.unsam.algo3.poifinder.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.unsam.algo3.poifinder.model.Poi;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -11,5 +15,5 @@ import retrofit.http.GET;
 
 public interface PoiService {
     @GET("/pois")
-    Call<Poi> getPois();
+    Call<ArrayList<Poi>> getPois();
 }

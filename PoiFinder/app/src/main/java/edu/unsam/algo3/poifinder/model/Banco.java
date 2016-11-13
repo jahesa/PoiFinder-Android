@@ -11,54 +11,40 @@ public class Banco extends Poi {
      * Atributos
      ****************************************************/
 
-    public ArrayList<String> diasAtencionList = new ArrayList<String>();
-    public ArrayList<String> servicios = new ArrayList<String>();
+    private ArrayList<String> _servicios = new ArrayList<String>();
     public static final double distanciaMinCercania = 0.5;
-    private String gerente;
-    private String direccion;
+    private String _gerente;
 
-    /*****************************************************
-     * Acciones
-     ****************************************************/
-
-    /*****************************************************
-     * Constructores
-     ****************************************************/
 
     public Banco(int id, String _nombre,String sucursal,String _gerente,ArrayList<String> _servicio, String dir)
     {
         super(id);
+        super.setTipo("Banco");
+
         super.nombre = nombre;
         super.barrio = sucursal;
-        gerente = _gerente;
-        servicios = _servicio;
-        direccion = dir;
+        _gerente = _gerente;
+        _servicios = _servicio;
+        super.setDireccion(dir);
         horarios = new Horario(10, 00, 15, 00);
     }
 
     public Banco(int id)
     {
         super(id);
+        super.setTipo("Banco");
     }
 
     /*****************************************************
      * Getters & Setters
      ****************************************************/
 
-    public ArrayList<String> getDiasAtencionList() {
-        return diasAtencionList;
-    }
-
-    public void setDiasAtencionList(ArrayList<String> diasAtencionList) {
-        this.diasAtencionList = diasAtencionList;
-    }
-
-    public void setServicios(ArrayList<String> servicios) {
-        this.servicios = servicios;
+     public void setServicios(ArrayList<String> servicios) {
+        this._servicios = servicios;
     }
 
     public ArrayList<String> getServicios() {
-        return servicios;
+        return _servicios;
     }
 
 //    @Override
@@ -67,42 +53,20 @@ public class Banco extends Poi {
 //    }
 
     public String getGerente() {
-        return gerente;
+        return _gerente;
     }
 
     public void setGerente(String gerente) {
-        this.gerente = gerente;
+        this._gerente = gerente;
     }
 
-    @Override
-    public String getDireccion() {
-        return direccion;
-    }
-
-    @Override
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-//    public Banco() {
-//        horarios = new Horario(10, 00, 15, 00);
-//    }
-
-
-//    public Poi(String _nombre) {
-//        nombre = _nombre;
-//    }
-
-//    public Banco(Point punto) {
-//        coordenada = punto;
-//    }
 
     /*****************************************************
      * Negocio
      ****************************************************/
 
     public void agregarServicio (String unServicio) {
-        servicios.add (unServicio);
+        _servicios.add (unServicio);
     }
 
     public void adddia(String dia) {

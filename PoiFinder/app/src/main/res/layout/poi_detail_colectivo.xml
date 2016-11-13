@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/lblDireccion"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/text_margin"
+        style="?android:attr/textAppearanceLarge"
+        android:text="Direccion:"/>
+
+    <TextView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/poi_direccion"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="edu.unsam.algo3.poifinder.PoiDetailFragment" />
+
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/lblNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/text_margin"
+        style="?android:attr/textAppearanceLarge"
+        android:text="Numero:"/>
+
+        <TextView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/poi_nro"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            tools:context="edu.unsam.algo3.poifinder.PoiDetailFragment" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lblCantParadas"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/text_margin"
+            style="?android:attr/textAppearanceLarge"
+            android:text="Cantidad de Paradas:"/>
+
+        <TextView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/txtCantParadas"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            tools:context="edu.unsam.algo3.poifinder.PoiDetailFragment" />b
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

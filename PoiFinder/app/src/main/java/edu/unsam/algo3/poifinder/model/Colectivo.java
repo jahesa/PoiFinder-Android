@@ -10,7 +10,6 @@ public class Colectivo extends Poi {
     /*****************************************************
      * Atributos
      ****************************************************/
-    private String nombre;
     //public ArrayList<Point> paradas = new ArrayList<Point>();
     public int cantParadas;
 
@@ -21,12 +20,14 @@ public class Colectivo extends Poi {
     public Colectivo(int id)
     {
         super(id);
+        super.setTipo("Colectivo");
     }
 
     public Colectivo(int id, int nombre , int cantParadas)
     {
         super(id);
-        nombre = nombre;
+        super.setTipo("Colectivo");
+        super.nombre = String.valueOf(nombre);
         cantParadas = cantParadas;
     }
 

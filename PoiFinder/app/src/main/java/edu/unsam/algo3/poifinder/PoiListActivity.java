@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import edu.unsam.algo3.poifinder.controller.PoiService;
 import edu.unsam.algo3.poifinder.dummy.DummyContent;
 import edu.unsam.algo3.poifinder.model.Poi;
 import edu.unsam.algo3.poifinder.model.RepoPois;
+import edu.unsam.algo3.poifinder.util.CustomDeserializer;
+import edu.unsam.algo3.poifinder.util.CustomPoiDeserializer;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -39,7 +54,10 @@ public class PoiListActivity extends AppCompatActivity {
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
+    private boolean useLocalData = false;
     private boolean mTwoPane;
+    private String jsonInString = "";
+    private View recyclerView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,25 +69,29 @@ public class PoiListActivity extends AppCompatActivity {
         toolbar.setTitle(getTitle());
 
 
-        final View recyclerView = findViewById(R.id.poi_list);
+        recyclerView = findViewById(R.id.poi_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
         final EditText txtBuscarNombre = (EditText) findViewById(R.id.txtBuscarNombre);
-
         Button btnBuscar = (Button) findViewById(R.id.btnBuscar);
         btnBuscar.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                //Toast.makeText(PoiListActivity.this, txtBuscarNombre.getText(), Toast.LENGTH_LONG).show();
                 String nombre = txtBuscarNombre.getText().toString();
                 RepoPois.filterByName(nombre);
                 setupRecyclerView((RecyclerView) recyclerView);
             }
+        });
+
+        if (!useLocalData) {
+            //Gson gson = new Gson();
+            //jsonInString = gson.toJson(RepoPois.poisFilteredList);
+            //Log.w("POIS", jsonInString);
+            RepoPois.poisFilteredList.clear();
+            RepoPois.poisList.clear();
+            enqueueGetPois();
         }
-        );
-
-
         if (findViewById(R.id.poi_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
@@ -77,6 +99,40 @@ public class PoiListActivity extends AppCompatActivity {
             // activity should be in two-pane mode.
             mTwoPane = true;
         }
+    }
+
+    private void enqueueGetPois() {
+        final String BASE_URL = "http://192.168.0.115:3000/Pois";
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(buildGsonConverter())
+                .build();
+
+        PoiService service = retrofit.create(PoiService.class);
+
+        Call<ArrayList<Poi>> call = service.getPois();
+        call.enqueue(new Callback<ArrayList<Poi>>() {
+            @Override
+            public void onResponse(Response<ArrayList<Poi>> response, Retrofit retrofit) {
+                RepoPois.poisList = response.body();
+                RepoPois.poisFilteredList.addAll(RepoPois.poisList);
+                setupRecyclerView((RecyclerView) recyclerView);
+           }
+            @Override
+            public void onFailure(Throwable t) {
+                Toast.makeText(PoiListActivity.this, "Ha ocurrido un error al llamar al servicio", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private static GsonConverterFactory buildGsonConverter() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+
+        // Adding custom deserializers
+        gsonBuilder.registerTypeAdapter(Poi.class,  new CustomPoiDeserializer());
+        Gson myGson = gsonBuilder.create();
+
+        return GsonConverterFactory.create(myGson);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

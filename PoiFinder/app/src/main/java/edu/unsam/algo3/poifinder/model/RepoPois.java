@@ -8,9 +8,9 @@ import java.util.ArrayList;
  */
 public class RepoPois {
 
-    public static final ArrayList<Poi> poisList = new ArrayList<Poi>();
+    public static ArrayList<Poi> poisList = new ArrayList<Poi>();
 
-    public static final ArrayList<Poi> poisFilteredList = new ArrayList<Poi>();
+    public static ArrayList<Poi> poisFilteredList = new ArrayList<Poi>();
 
     /**
      * SINGLETON

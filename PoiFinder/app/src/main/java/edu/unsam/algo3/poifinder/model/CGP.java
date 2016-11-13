@@ -13,7 +13,6 @@ public class CGP extends Poi {
     private Comuna comuna;
     public ArrayList<String> servicios = new ArrayList<String>();
     public String director;
-    private String direccion;
     private String tel;
 
     /*****************************************************
@@ -23,6 +22,7 @@ public class CGP extends Poi {
     public CGP(int id)
     {
         super(id);
+        super.setTipo("CGP");
     }
 
 //    public CGP(int _numero, String barrios, String _director, String calle, String _telefono, ArrayList<String> _servicio){
@@ -61,16 +61,6 @@ public class CGP extends Poi {
 
     public void setDirector(String director) {
         this.director = director;
-    }
-
-    @Override
-    public String getDireccion() {
-        return direccion;
-    }
-
-    @Override
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public String getTel() {

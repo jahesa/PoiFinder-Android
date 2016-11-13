@@ -9,8 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.JsonObject;
+import com.google.gson.internal.Streams;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import edu.unsam.algo3.poifinder.model.Colectivo;
 import edu.unsam.algo3.poifinder.model.Poi;
 import edu.unsam.algo3.poifinder.model.RepoPois;
+import edu.unsam.algo3.poifinder.util.CustomPoiDeserializer;
 
 /**
  * A fragment representing a single Poi detail screen.
@@ -62,61 +70,55 @@ public class PoiDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.poi_detail, container, false);
-
-        // Show the dummy content as text in a TextView.
+        View rootView = null;
         if (poiSeleccionado != null) {
+            rootView = getView(inflater, container, savedInstanceState);
             ((TextView) rootView.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
             ((TextView) rootView.findViewById(R.id.poi_nro)).setText(String.valueOf(poiSeleccionado.getNumero()));
-
-
-            //((TextView) rootView.findViewById(R.id.poi_nr)).setText(String.valueOf(poiSeleccionado.getCantParadas()));
         }
-
         return rootView;
     }
 
-    // metodo alternativo
+    public View getView(LayoutInflater inflater, ViewGroup container,
+                        Bundle savedInstanceState){
+        try {
+            String type = poiSeleccionado.getTipo();
+            Class<?>[] paramTypes = {LayoutInflater.class, ViewGroup.class, Bundle.class};
+            Method createViewMethod = this.getClass().getMethod("createView"+type, paramTypes);
+            return (View) createViewMethod.invoke(this, inflater, container, savedInstanceState);
+        } catch (SecurityException e) {  }
+        catch (NoSuchMethodException e) {  }
+        catch (IllegalArgumentException e) {  }
+        catch (IllegalAccessException e) {  }
+        catch (InvocationTargetException e) {  }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState)
-//
-//    {
-//        View rootViewColectivo = inflater.inflate(R.layout.poi_detailColectivo, container, false);
-//        View rootViewCgp = inflater.inflate(R.layout.poi_detailCgp, container, false);
-//        View rootViewLocal = inflater.inflate(R.layout.poi_detailLocal, container, false);
-//        View rootViewBanco = inflater.inflate(R.layout.poi_detailBanco, container, false);
-//
-//        //Show the dummy content as text in a TextView.
-//        if ((poiSeleccionado != null) && (poiSeleccionado.getTipo() == "Colectivo"))
-//        {
-//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
-//            ((TextView) rootViewColectivo.findViewById(R.id.poi_nr)).setText(String.valueOf(poiSeleccionado.getCantParadas()))
-//
-//            //((TextView) rootViewColectivo.findViewById(R.id.poi_nro)).setText(String.valueOf(poiSeleccionado.getNumero()));
-//
-//            return rootViewColectivo;
-//        }
-//
-//        else if ((poiSeleccionado != null) && (poiSeleccionado.getTipo() == "CGP"))
-//        {
-//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
-//            return rootViewCgp;
-//        }
-//
-//        else if ((poiSeleccionado != null) && (poiSeleccionado.getTipo() == "Local"))
-//        {
-//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
-//            return rootViewLocal;
-//        }
-//
-//            ((TextView) rootViewColectivo.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
-//            return rootViewBanco;
-//    }
+        return null;
+    }
 
+    public View createViewColectivo(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.poi_detail_colectivo, container, false);
+        String paradas = String.valueOf( ((Colectivo) poiSeleccionado).getCantParadas());
+        ((TextView) rootView.findViewById(R.id.txtCantParadas)).setText( paradas);
+        return rootView;
+    }
 
+    public View createViewBanco(LayoutInflater inflater, ViewGroup container,
+                                    Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.poi_detail_banco, container, false);
+        return rootView;
+    }
 
+    public View createViewLocal(LayoutInflater inflater, ViewGroup container,
+                                Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.poi_detail_local, container, false);
+        return rootView;
+    }
+    public View createViewCGP(LayoutInflater inflater, ViewGroup container,
+                                Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.poi_detail_cgp, container, false);
+        return rootView;
+    }
 
 
 

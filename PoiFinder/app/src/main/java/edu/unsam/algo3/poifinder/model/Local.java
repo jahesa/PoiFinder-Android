@@ -12,8 +12,6 @@ public class Local extends Poi {
      ****************************************************/
 
     private String categoria;
-    public ArrayList<String> palabrasClaves = new ArrayList<String>();
-    private String direccion;
 
     /**
      * Acciones
@@ -26,6 +24,7 @@ public class Local extends Poi {
     public Local(int id)
     {
         super(id);
+        super.setTipo("Local");
     }
 
     /*****************************************************
@@ -48,15 +47,6 @@ public class Local extends Poi {
         this.palabrasClaves = servicios;
     }
 
-    @Override
-    public String getDireccion() {
-        return direccion;
-    }
-
-    @Override
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     /*****************************************************
      * Acciones
