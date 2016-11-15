@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,10 @@ import com.google.gson.internal.Streams;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import edu.unsam.algo3.poifinder.model.Banco;
+import edu.unsam.algo3.poifinder.model.CGP;
 import edu.unsam.algo3.poifinder.model.Colectivo;
+import edu.unsam.algo3.poifinder.model.Local;
 import edu.unsam.algo3.poifinder.model.Poi;
 import edu.unsam.algo3.poifinder.model.RepoPois;
 import edu.unsam.algo3.poifinder.util.CustomPoiDeserializer;
@@ -73,8 +77,7 @@ public class PoiDetailFragment extends Fragment {
         View rootView = null;
         if (poiSeleccionado != null) {
             rootView = getView(inflater, container, savedInstanceState);
-            ((TextView) rootView.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
-            ((TextView) rootView.findViewById(R.id.poi_nro)).setText(String.valueOf(poiSeleccionado.getNumero()));
+            ((TextView) rootView.findViewById(R.id.poi_nro)).setText(String.valueOf(poiSeleccionado.getId()));
         }
         return rootView;
     }
@@ -95,7 +98,7 @@ public class PoiDetailFragment extends Fragment {
         return null;
     }
 
-    public View createViewColectivo(LayoutInflater inflater, ViewGroup container,
+    public View createViewcolectivo(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.poi_detail_colectivo, container, false);
         String paradas = String.valueOf( ((Colectivo) poiSeleccionado).getCantParadas());
@@ -103,20 +106,33 @@ public class PoiDetailFragment extends Fragment {
         return rootView;
     }
 
-    public View createViewBanco(LayoutInflater inflater, ViewGroup container,
+    public View createViewbanco(LayoutInflater inflater, ViewGroup container,
                                     Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.poi_detail_banco, container, false);
+        ((TextView) rootView.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
+        ((TextView) rootView.findViewById(R.id.txtGerente)).setText(((Banco) poiSeleccionado).getGerente());
+        String servicios = TextUtils.join(", ", ((Banco) poiSeleccionado).getServicios());
+        ((TextView) rootView.findViewById(R.id.txtServicios)).setText(servicios);
+
         return rootView;
     }
 
-    public View createViewLocal(LayoutInflater inflater, ViewGroup container,
+    public View createViewlocal(LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.poi_detail_local, container, false);
+        ((TextView) rootView.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
+        ((TextView) rootView.findViewById(R.id.txtCategorias)).setText(((Local) poiSeleccionado).getCategoria());
+        String palabras = TextUtils.join(", ", ((Local) poiSeleccionado).getPalabrasClaves());
+        ((TextView) rootView.findViewById(R.id.txtPalabras)).setText(palabras);
         return rootView;
     }
-    public View createViewCGP(LayoutInflater inflater, ViewGroup container,
+    public View createViewcgp(LayoutInflater inflater, ViewGroup container,
                                 Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.poi_detail_cgp, container, false);
+        ((TextView) rootView.findViewById(R.id.poi_direccion)).setText(poiSeleccionado.getDireccion());
+        ((TextView) rootView.findViewById(R.id.txtTelefono)).setText(((CGP) poiSeleccionado).getTel());
+        ((TextView) rootView.findViewById(R.id.txtBarrio)).setText(((CGP) poiSeleccionado).getBarrio());
+
         return rootView;
     }
 

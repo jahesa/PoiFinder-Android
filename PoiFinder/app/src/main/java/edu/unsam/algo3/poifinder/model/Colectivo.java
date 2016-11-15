@@ -20,7 +20,7 @@ public class Colectivo extends Poi {
     public Colectivo(int id)
     {
         super(id);
-        super.setTipo("Colectivo");
+        super.setTipo("colectivo");
     }
 
     public Colectivo(int id, int nombre , int cantParadas)

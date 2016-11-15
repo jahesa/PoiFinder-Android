@@ -1,7 +1,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_local"
+            android:id="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/poi_nro"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            tools:context="edu.unsam.algo3.poifinder.PoiDetailFragment"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -25,36 +50,7 @@
         android:padding="16dp"
         android:textIsSelectable="true"
         tools:context="edu.unsam.algo3.poifinder.PoiDetailFragment" />
-
     </LinearLayout>
-
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-    <TextView
-        android:id="@+id/lblNumero"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
-        style="?android:attr/textAppearanceLarge"
-        android:text="Numero:"/>
-
-        <TextView
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/poi_nro"
-            style="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:textIsSelectable="true"
-            tools:context="edu.unsam.algo3.poifinder.PoiDetailFragment" />b
-
-    </LinearLayout>
-
-
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -62,16 +58,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/lblCantParadas"
+            android:id="@+id/lblCategoria"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/text_margin"
             style="?android:attr/textAppearanceLarge"
-            android:text="Cantidad de Paradas:"/>
+            android:text="Categoria:"/>
 
         <TextView
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/lblCantParadas"
+            android:id="@+id/txtCategorias"
             style="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -81,6 +77,30 @@
 
     </LinearLayout>
 
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lblPalabras"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/text_margin"
+            style="?android:attr/textAppearanceLarge"
+            android:text="Palabras:"/>
+
+        <TextView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/txtPalabras"
+            style="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:textIsSelectable="true"
+            tools:context="edu.unsam.algo3.poifinder.PoiDetailFragment" />
+    </LinearLayout>
 
 
 

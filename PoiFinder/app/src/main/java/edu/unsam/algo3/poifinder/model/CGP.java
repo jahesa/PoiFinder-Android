@@ -22,7 +22,7 @@ public class CGP extends Poi {
     public CGP(int id)
     {
         super(id);
-        super.setTipo("CGP");
+        super.setTipo("cgp");
     }
 
 //    public CGP(int _numero, String barrios, String _director, String calle, String _telefono, ArrayList<String> _servicio){

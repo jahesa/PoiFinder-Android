@@ -102,7 +102,7 @@ public class PoiListActivity extends AppCompatActivity {
     }
 
     private void enqueueGetPois() {
-        final String BASE_URL = "http://192.168.0.115:3000/Pois";
+        final String BASE_URL = "http://192.168.0.115:9000";
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(buildGsonConverter())

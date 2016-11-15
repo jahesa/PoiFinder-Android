@@ -32,7 +32,7 @@ public class Banco extends Poi {
     public Banco(int id)
     {
         super(id);
-        super.setTipo("Banco");
+        super.setTipo("banco");
     }
 
     /*****************************************************

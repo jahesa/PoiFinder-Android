@@ -24,7 +24,7 @@ public class Local extends Poi {
     public Local(int id)
     {
         super(id);
-        super.setTipo("Local");
+        super.setTipo("local");
     }
 
     /*****************************************************
